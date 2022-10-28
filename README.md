@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="assets/web_assets/taskbank_tile_GIF.gif"  width="900px" />
-</div>
-
 # GoogleNet on CIFAR-10
 
 This repository shares a unified bank of pretrained models for **25 vision tasks spanning a wide range of 2D, 3D, and semantic problems**. Given a query image, the produced 25 estimations give a broad visual understanding useful for different purposes. The networks can be used individually as well. We share pretrained networks, easy to use code for running them on arbitrary images, and code for visualizing results similar to the ones shown below. The following figure shows the outputs for a sample query (top left). You can watch a video of the networks applied frame-by-frame on a [YouTube video here](https://youtu.be/SUq1CiX-KzM?t=1m52s).
@@ -27,11 +23,6 @@ Table of contents
    * [Running Multi-Image Tasks](#running-multi-image-tasks)
    * [Training Data Statistics](#training-data-statistics)
    * [Citing](#citing)
-
-
-<div align="center">
-  <img src="assets/web_assets/task_dict_v.jpg" />
-</div>
 
 
 ## Introduction
