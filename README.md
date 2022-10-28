@@ -1,16 +1,7 @@
 # GoogleNet on CIFAR-10
+This repository is for homework of AI security.
 
-This repository shares a unified bank of pretrained models for **25 vision tasks spanning a wide range of 2D, 3D, and semantic problems**. Given a query image, the produced 25 estimations give a broad visual understanding useful for different purposes. The networks can be used individually as well. We share pretrained networks, easy to use code for running them on arbitrary images, and code for visualizing results similar to the ones shown below. The following figure shows the outputs for a sample query (top left). You can watch a video of the networks applied frame-by-frame on a [YouTube video here](https://youtu.be/SUq1CiX-KzM?t=1m52s).
-
-
-| UPDATE (2019): Pretrained models now also available in PyTorch [HERE](https://github.com/alexsax/midlevel-reps/blob/master/README.md#installing-visualpriors).|
 |------------------------------------------------------------------------|
-
-**See sample results [here](https://taskonomy.vision/#models). Live demo: [here](https://taskonomy.vision/tasks). Project website: https://taskonomy.vision**
-
-#### Reference Paper: "Taskonomy: Disentangling Task Transfer Learning", CVPR 2018. [Best Paper award]
-Amir R. Zamir, Alexander Sax*, William B. Shen*, Leonidas Guibas, Jitendra Malik, Silvio Savarese. 
-
 
 Table of contents
 =================
@@ -26,8 +17,6 @@ Table of contents
 
 
 ## Introduction
-
-
 These models are based on task specific networks of the [Taskonomy](http://taskonomy.vision/) project.
 For more extensive discussions about Taskonomy and transfer learning, please see the [CVPR 2018 paper](http://taskonomy.vision/). This repository focuses on providing an easy to use unified bank for the pretrained vision tasks. There are 21 tasks accepting one image as input (e.g. surface normal estimation) and 4 tasks accepting multiple image (e.g. relative camera pose estimation). See [detailed definition of each task here](https://github.com/StanfordVL/taskonomy/blob/master/taskbank/assets/web_assets/task_definitions.pdf).
 
@@ -49,9 +38,6 @@ The multi-image tasks:
 Pairwise-Nonfixated-Camera-Pose Pairwise-Fixated-Camera-Pose
 Triplet-Fixated-Camera-Pose     Point-Matching
 ``` 
-<div align="center">
-  <img src="assets/web_assets/figure.png" />
-</div>
 
 ### Network Architecture
 
@@ -60,12 +46,6 @@ As shown in the figure above, each task shares the same encoder architecture. Th
 Also, we trained all of the networks on **the same exact set of input images**, i.e. the pixels seen in the input by all networks are identical and the only difference is in the output space. 
 
 Since the tasks in our dictionary can have different dimensionalities in their output, we have a varying decoder architecture accordingly. We tried to keep the decoder structure compact and varying as little as possible. Also, slighlty different kind of loss could be employed for different tasks accordingly. See the table below for the complete information.
-
-<div align="center">
-  <img src="assets/web_assets/decoder_loss.png"  />
-</div>
-
-
 
 ## Installation
 
@@ -129,16 +109,7 @@ Then, we can run the script on our [example image](https://github.com/StanfordVL
 python tools/run_img_task.py --task rgb2sfnorm --img assets/test.png --store assets/test_sf.png
 ```
 
-<div align="center">
-  <img src="assets/test.png" width="288px" />
-  <p>Example Test Image</p>
-</div>
-
 Which will give us image [`test_sf.png`](https://github.com/StanfordVL/taskonomy/blob/master/taskbank/assets/web_assets/test_sf.png):
-<div align="center">
-  <img src="assets/web_assets/test_sf.png" width="288px" />
-  <p>Surface Normal Estimation on the Test Image</p>
-</div>
 
 Similarly, non pixel-to-pixel tasks which produce lower dimensional (e.g. vanishing points) or classification (e.g. scene classification) outputs uses the same script. For example:
 ```
@@ -151,16 +122,8 @@ python tools/run_img_task.py --task class_places --img assets/test.png --store a
 ```
 
 Which will give us image [`test_scene_class.png`](https://github.com/StanfordVL/taskonomy/blob/master/taskbank/assets/test_places.png):
-<div align="center">
-  <img src="assets/web_assets/test_scene_class.png" width="288px" />
-  <p>Scene Classification on Test Image </p>
-</div>
 
 Similarly, running `vanishing_point`, `curvature`, `reshade`, `rgb2mist`, `segment25d` on [`test.png`](https://github.com/StanfordVL/taskonomy/blob/master/taskbank/assets/test.png)returns the following results:
-
-<div align="center">
-  <img src="assets/web_assets/sample_outputs.png" />
-</div>
 
 ### Storing Representations
 The flag `--store-rep` enables saving the representation of the image prduced by task's encoder. Add `--store-rep` to the command and the representation will be stored at `${WHERE_TO_STORE}.npy`. For example, running:
@@ -203,16 +166,7 @@ Then, we can run the script on our [example image 1](https://github.com/Stanford
 python tools/run_multi_img_task.py --task non_fixated_pose --img assets/test_1.png,assets/test.png --store assets/test_pose.png
 ```
 
-<div align="center">
-  <img src="assets/web_assets/sbs.png" width="650px" />
-  <p>Camera Pose Estimation - Input Images (left: test_1.png, right:test.png)</p>
-</div>
-
 The script will give us [`assets/web_assets/test_pose.png`](https://github.com/StanfordVL/taskonomy/blob/master/taskbank/assets/web_assets/test_scene_class.png):
-<div align="center">
-  <img src="assets/web_assets/test_pose.png" width="288px" />
-  <p>Camera Pose Estimation (green represents `test.png` 's camera. Red represents `test_1.png` 's.)</p>
-</div>
 
 Note: camera pose is calculate with reference to the second image (here that is `test.png`). 
 
@@ -229,9 +183,6 @@ For a complete discussion on the evaluation of the networks, please see the [pap
 
 To give an overall idea about the quality of the bank, the table below shows the proportion (%) of a hold-out test set on which the networks in the task bank were able to beat average estimator (`avg`), i.e. the best statistically informed guess, and a network trained on random nonlinear projections (Gaussian representation - `rand`). The numbers denote the good quality of the networks, statistically. Qualititave results run frame-by-frame on a YouTube video can be examined [here](https://taskonomy.vision/#models).  
 
-<div align="center">
-  <img src="assets/web_assets/losses.png" width="500px"  />
-</div>
 
 
 ## Training Data Statistics
