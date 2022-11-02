@@ -100,6 +100,8 @@ def train():
         transform=transform
     )
     batch_size = 256
+    print('batch size: ', batch_size)
+    lr = 1e-1
     print('train_data.size: ', train_data.__len__())
     print('test_data.size: ', test_data.__len__())
 
@@ -116,13 +118,13 @@ def train():
     model = googlenet().to(device)
     # TRAIN MODEL
     loss_func = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(params=model.parameters())
-    epoches = 20
+    optimizer = torch.optim.Adam(params=model.parameters(), lr=lr)
+    epoches = 50
     runner = Runner(model, device=device)
     for epoch in range(epoches):
         runner.train(train_dataloader, loss_func, optimizer, epoch)
         runner.validation(valid_dataloader, loss_func)
-    runner.test(test_dataloader)
+    runner.test(test_dataloader, loss_func)
 
     # Save models
     torch.save(model.state_dict(), './results/model.pth')
