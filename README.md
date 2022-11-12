@@ -10,7 +10,7 @@ Table of contents
    * [Effects of hyper-parameter on Performance](#effects-of-hyper-parameter-on-performance)
 
 ## Introduction
-GoogLeNet is a type of convolutional neural network based on the Inception architecture. It utilises Inception modules, which allow the network to choose between multiple convolutional filter sizes in each block. An Inception network stacks these modules on top of each other, with occasional max-pooling layers with stride 2 to halve the resolution of the grid.
+The model is a type of convolutional neural network based on the Inception architecture. It utilises Inception modules, which allow the network to choose between multiple convolutional filter sizes in each block. An Inception network stacks these modules on top of each other, with occasional max-pooling layers with stride 2 to halve the resolution of the grid.
 
 ### Network Architecture
 ![Model Architecture](./images/googlenet_architecture.png)
