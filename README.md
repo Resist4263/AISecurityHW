@@ -70,3 +70,5 @@ The results as fllows:
 | 1e-3 | 86.7% |
 | 1e-4 | 78.2% |
 | 1e-5 | 57.7% |
+
+According to the experimental resutls, the model reached the highest accuary when batch size is 64 and learning rate is 1e-3.
